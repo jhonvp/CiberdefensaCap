@@ -1,0 +1,7 @@
+mkdir portal-activos-bacci-demo && cd portal-activos-bacci-demo && git init
+echo '# Portal de activos (demo académica)' > README.md && git add README.md && git commit -m 'Estructura inicial'
+mkdir config && printf 'API_URL=https://api.laboratorio-bacci.test\n' > config/settings.py && git add config && git commit -m 'Config inicial'
+printf 'DB_PASSWORD=FAKE_pass_lab\nAPI_KEY=sk_test_FAKE1234567890abcdef\n' > .env && git add .env && git commit -m 'Variables de entorno'
+printf '.env\n' > .gitignore && git add .gitignore && git commit -m 'Agrega gitignore'
+git rm --cached .env && git commit -m 'Elimina .env del tracking'
+git checkout -b feature/pagos && printf 'STRIPE_TEST_KEY=sk_test_FAKE_lab_only\n' > pagos.env && git add pagos.env && git commit -m 'Integracion de pagos (demo)' && git checkout main
